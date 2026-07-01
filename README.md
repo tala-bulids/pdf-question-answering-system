@@ -11,6 +11,7 @@ An NLP application that allows users to upload a PDF document and ask questions 
 - 📚 Stores question-answer history.
 - ⏱️ Measures inference time.
 - ✂️ Splits long documents into overlapping text chunks to improve answer quality.
+- Retrieves the most relevant text chunks using TF-IDF, character-level similarity, and cosine similarity before answering.
 
 ## Technologies
 
@@ -20,14 +21,18 @@ An NLP application that allows users to upload a PDF document and ask questions 
 - PyPDF
 - Pandas
 - Jupyter Notebook
+- Scikit-learn
 
 ## How it Works
 
-1. Upload a PDF document.
-2. The system extracts all text from the PDF.
-3. The document is split into overlapping chunks.
-4. The model searches across all chunks.
-5. The answer with the highest confidence score is returned.
+## How it Works
+
+1. The user selects a PDF file.
+2. The system extracts and cleans the PDF text.
+3. The text is split into overlapping chunks.
+4. TF-IDF and cosine similarity are used to retrieve the most relevant chunks.
+5. A Transformer-based QA model extracts the best answer from the selected chunks.
+6. The system displays the answer, confidence score, inference time, and stores the Q&A history.
 
 ## Example
 
@@ -45,7 +50,7 @@ An NLP application that allows users to upload a PDF document and ask questions 
 
 ## Future Improvements
 
-- Support RAG (Retrieval-Augmented Generation)
+- Implement Retrieval-Augmented Generation (RAG)
 - Add semantic search using embeddings
 - Build a Gradio web interface
 - Highlight the answer inside the PDF
